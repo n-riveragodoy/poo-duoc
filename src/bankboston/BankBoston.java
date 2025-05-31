@@ -63,7 +63,8 @@ public class BankBoston {
             return 0;
         }
     }
-      private static void registrarCliente() {
+    
+    private static void registrarCliente() {
         System.out.println("\n=== REGISTRO DE CLIENTE ===");
         System.out.println("Para cancelar el registro y volver al menú principal en cualquier momento, escriba 'cancelar'");
         String rut = "", nombre = "", apellidoPaterno = "", apellidoMaterno = "";
