@@ -6,7 +6,7 @@ package bankboston;
 
 /**
  *
- * @author aandr
+ * @author Agustín Andrews y Nicolás Rivera
  */
 public class CuentaAhorro extends CuentaBase {
     private final int topeMensualGiro = 3;

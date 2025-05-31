@@ -6,7 +6,7 @@ package bankboston;
 
 /**
  *
- * @author aandr
+ * @author Agustín Andrews y Nicolás Rivera
  */
 public class CuentaCredito extends CuentaBase {
     public CuentaCredito(int numero, int saldo) {

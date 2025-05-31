@@ -6,7 +6,7 @@ package bankboston;
 
 /**
  *
- * @author aandr
+ * @author Agustín Andrews y Nicolás Rivera
  */
 public class CuentaCorriente extends CuentaBase {
     public CuentaCorriente(int numero, int saldo) {

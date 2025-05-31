@@ -6,7 +6,7 @@ package bankboston;
 
 /**
  *
- * @author aandr
+ * @author Agustín Andrews y Nicolás Rivera
  */
 public class Cliente {
     // Atributos de la clase

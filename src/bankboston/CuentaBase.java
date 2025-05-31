@@ -6,7 +6,7 @@ package bankboston;
 
 /**
  *
- * @author aandr
+ * @author Agustín Andrews y Nicolás Rivera
  */
 public abstract class CuentaBase implements Cuenta {
     // Atributos de la clase

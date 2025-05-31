@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Agustín Andrews
+ * @author Agustín Andrews y Nicolás Rivera
  */
 public class BankBoston {
     // Lista de clientes
