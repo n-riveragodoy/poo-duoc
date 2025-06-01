@@ -13,7 +13,7 @@ import java.util.Scanner;
  */
 public class BankBoston {
     // Lista de clientes
-    private static ArrayList<Cliente> clientes = new ArrayList<>();
+    private static ArrayList<ClienteBase> clientes = new ArrayList<>();
     
     private static int contadorCuentas = 1; // Contador para números de cuenta
     private static final Scanner scanner = new Scanner(System.in);
@@ -193,20 +193,20 @@ public class BankBoston {
             case 3 -> cuenta = new CuentaCredito(numeroCuenta, 0);
             default -> throw new IllegalStateException("Tipo de cuenta inválido");
         }
-        Cliente nuevoCliente = new Cliente(rut, nombre, apellidoPaterno, apellidoMaterno, domicilio, comuna, telefono, cuenta);
+        ClienteBase nuevoCliente = new ClienteBase(rut, nombre, apellidoPaterno, apellidoMaterno, domicilio, comuna, telefono, cuenta);
         clientes.add(nuevoCliente);
         System.out.println("¡Cliente registrado exitosamente! Número de cuenta: " + String.format("%09d", numeroCuenta));
     }
 
     // Método para seleccionar un cliente de la lista
-    private static Cliente seleccionarCliente() {
+    private static ClienteBase seleccionarCliente() {
         if (clientes.isEmpty()) {
             System.out.println("No hay clientes registrados.");
             return null;
         }
         System.out.println("\n=== LISTADO DE CLIENTES ===");
         for (int i = 0; i < clientes.size(); i++) {
-            Cliente cliente = clientes.get(i);
+            ClienteBase cliente = clientes.get(i);
             System.out.println((i + 1) + ". " + cliente.getDatosResumidos());
         }
         System.out.print("Seleccione un cliente por número: ");
@@ -224,22 +224,22 @@ public class BankBoston {
     }
 
     private static void verDatosCliente() {
-        Cliente cliente = seleccionarCliente();
+        ClienteBase cliente = seleccionarCliente();
         if (cliente == null) return;
         System.out.println("\n=== DATOS DEL CLIENTE ===");
         System.out.println(cliente.getDatosDetallados());
     }
 
     private static void realizarDeposito() {
-        Cliente cliente = seleccionarCliente();
+        ClienteBase cliente = seleccionarCliente();
         if (cliente == null) return;
         System.out.println("\n=== REALIZAR DEPÓSITO ===");
         System.out.print("Ingrese un monto para depositar: ");
         try {
             int monto = Integer.parseInt(scanner.nextLine());
-            if (cliente.depositar(monto)) {
+            if (cliente.getCuenta().depositar(monto)) {
                 System.out.println("¡Depósito realizado de manera exitosa!");
-                System.out.println("Usted tiene un saldo actual de " + cliente.consultarSaldo() + " pesos.");
+                System.out.println("El cliente tiene un saldo actual de " + cliente.getCuenta().getSaldo() + " pesos.");
             } else {
                 System.out.println("Error: El monto a depositar debe ser mayor a cero."); // TODO: llevar lógica adentro de clase de cuenta
             }
@@ -249,10 +249,10 @@ public class BankBoston {
     }
 
     private static void realizarGiro() {
-        Cliente cliente = seleccionarCliente();
+        ClienteBase cliente = seleccionarCliente();
         if (cliente == null) return;
         System.out.println("\n=== REALIZAR GIRO ===");
-        if (!cliente.tieneSaldo()) {
+        if (!cliente.getCuenta().tieneSaldo()) {
             System.out.println("Error: No tiene saldo suficiente para realizar giros.");
             return;
         }
@@ -263,13 +263,13 @@ public class BankBoston {
                 System.out.println("Error: El monto a girar debe ser mayor a cero.");
                 return;
             }
-            if (!cliente.tieneSaldoSuficiente(monto)) {
-                System.out.println("Error: El monto a girar excede su saldo actual de " + cliente.consultarSaldo() + " pesos.");
+            if (!cliente.getCuenta().tieneSaldoSuficiente(monto)) {
+                System.out.println("Error: El monto a girar excede su saldo actual de " + cliente.getCuenta().getSaldo() + " pesos.");
                 return;
             }
-            if (cliente.girar(monto)) {
+            if (cliente.getCuenta().girar(monto)) {
                 System.out.println("¡Giro realizado de manera exitosa!");
-                System.out.println("Usted tiene un saldo actual de " + cliente.consultarSaldo() + " pesos.");
+                System.out.println("El cliente tiene un saldo actual de " + cliente.getCuenta().getSaldo() + " pesos.");
             }
         } catch (NumberFormatException e) {
             System.out.println("Error: El monto debe ser un valor numérico.");
@@ -277,9 +277,9 @@ public class BankBoston {
     }
 
     private static void consultarSaldo() {
-        Cliente cliente = seleccionarCliente();
+        ClienteBase cliente = seleccionarCliente();
         if (cliente == null) return;
         System.out.println("\n=== CONSULTA DE SALDO ===");
-        System.out.println("Saldo actual: " + cliente.consultarSaldo() + " pesos");
+        System.out.println("Saldo actual: " + cliente.getCuenta().getSaldo() + " pesos");
     }
 }

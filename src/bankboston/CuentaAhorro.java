@@ -9,7 +9,7 @@ package bankboston;
  * @author Agustín Andrews y Nicolás Rivera
  */
 public class CuentaAhorro extends CuentaBase {
-    private final int topeMensualGiro = 3;
+    private final int topeGiros = 3;
     private int girosRealizados = 0;
     
     public CuentaAhorro(int numero, int saldo) {
@@ -18,8 +18,8 @@ public class CuentaAhorro extends CuentaBase {
     
     @Override
     public boolean girar(int monto) {
-        if (girosRealizados >= topeMensualGiro) {
-            System.out.println("Límite de giros mensuales alcanzado.");
+        if (girosRealizados >= topeGiros) {
+            System.out.println("Límite de giros alcanzado.");
             return false;
         }
         
@@ -30,7 +30,7 @@ public class CuentaAhorro extends CuentaBase {
         return false;
     }
     
-    public void reiniciarGirosMensuales() {
+    public void reiniciarGiros() {
         girosRealizados = 0;
     }
 }
