@@ -9,9 +9,7 @@ package bankboston;
  * @author Agustín Andrews y Nicolás Rivera
  */
 public class CuentaCorriente extends CuentaBase {
-    public CuentaCorriente(int numero, int saldo) {
-        super(numero, saldo);
+    public CuentaCorriente(int saldo) {
+        super(saldo);
     }
-    
-    // TODO: Lógica especifica de cuentas corrientes
 }

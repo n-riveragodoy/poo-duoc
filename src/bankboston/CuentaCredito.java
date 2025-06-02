@@ -11,8 +11,8 @@ package bankboston;
 public class CuentaCredito extends CuentaBase {
     private final int lineaCredito = 500000; // Línea de crédito máxima permitida (saldo puede llegar a -500000)
 
-    public CuentaCredito(int numero, int saldo) {
-        super(numero, saldo);
+    public CuentaCredito(int saldo) {
+        super(saldo);
     }
 
     @Override
@@ -41,5 +41,4 @@ public class CuentaCredito extends CuentaBase {
         return (getSaldo() - monto) >= -lineaCredito;
     }
 
-    // TODO: Lógica especifica de cuentas de crédito
 }

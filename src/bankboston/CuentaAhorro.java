@@ -11,9 +11,9 @@ package bankboston;
 public class CuentaAhorro extends CuentaBase {
     private final int topeGiros = 3;
     private int girosRealizados = 0;
-    
-    public CuentaAhorro(int numero, int saldo) {
-        super(numero, saldo);
+
+    public CuentaAhorro(int saldo) {
+        super(saldo);
     }
     
     @Override

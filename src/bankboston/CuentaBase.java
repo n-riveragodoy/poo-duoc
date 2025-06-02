@@ -4,11 +4,16 @@
  */
 package bankboston;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Agustín Andrews y Nicolás Rivera
  */
 public abstract class CuentaBase implements Cuenta {
+    private static int contadorCuentas = 1;  // Contador para números de cuenta
+
     // Atributos de la clase
     private int numero, saldo;
     
@@ -17,9 +22,10 @@ public abstract class CuentaBase implements Cuenta {
     }
     
     // Constructor con atributos
-    public CuentaBase(int numero, int saldo) {
-        this.numero = numero;
+    public CuentaBase(int saldo) {
+        this.numero = contadorCuentas;
         this.saldo = saldo;
+        contadorCuentas++;
     }
     
     // Getters y Setters
