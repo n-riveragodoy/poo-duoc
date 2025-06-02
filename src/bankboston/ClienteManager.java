@@ -30,19 +30,16 @@ public class ClienteManager {
     }
 
     public static void consultarSaldo(ClienteBase cliente) {
-
         System.out.println("\n=== CONSULTA DE SALDO ===");
         System.out.println("Saldo actual: " + cliente.getCuenta().getSaldo() + " pesos");
     }
 
-        public static void verDatosCliente(ClienteBase cliente) {
-        
+    public static void verDatosCliente(ClienteBase cliente) {
         System.out.println("\n=== DATOS DEL CLIENTE ===");
         System.out.println(cliente.getDatosDetallados());
     }
 
-        public static void realizarDeposito(ClienteBase cliente, Scanner scanner) {
-
+    public static void realizarDeposito(ClienteBase cliente, Scanner scanner) {
         System.out.println("\n=== REALIZAR DEPÓSITO ===");
         System.out.print("Ingrese un monto para depositar: ");
         try {
@@ -59,7 +56,6 @@ public class ClienteManager {
     }
 
     public static void realizarGiro(ClienteBase cliente, Scanner scanner) {
-        
         System.out.println("\n=== REALIZAR GIRO ===");
         if (!cliente.getCuenta().tieneSaldo()) {
             System.out.println("Error: No tiene saldo suficiente para realizar giros.");
